@@ -1,4 +1,4 @@
-var deadline = 'January 1 2015 UTC−05:00';
+var deadline = '2016-01-01 00:00:00 GMT-0500';
 
 function getTimeRemaining(endtime){
   var t = Date.parse(endtime) - Date.parse(new Date());
@@ -18,14 +18,16 @@ function getTimeRemaining(endtime){
 function initializeClock(endtime){
   var timeinterval = setInterval(function(){
     var t = getTimeRemaining(endtime);
-    document.getElementById("countdown").innerHTML = 'days: ' + t.days + '<br>' +
-                      'hours: '+ t.hours + '<br>' +
-                      'minutes: ' + t.minutes + '<br>' +
-                      'seconds: ' + t.seconds;
+    document.getElementById("countdown").innerHTML = ('0' + t.days).slice(-2) + ':' + ('0' + t.hours).slice(-2) + ':' + ('0' + t.minutes).slice(-2) + ':' + ('0' + t.seconds).slice(-2) +" Until 2016!"
     if(t.total<=0){
       clearInterval(timeinterval);
+      document.getElementById("countdown").innerHTML = '<i class="fa fa-flag"></i> Happy New Year!'
     }
   },1000);
 }
 
 initializeClock(deadline);
+
+function hello(){
+  alert("Hello!")
+}
